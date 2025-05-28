@@ -26,15 +26,18 @@ window {
 
 .action {
   border-radius: 0;
-  border-right: 1px solid @borders;
+  background: @l3;
+  border-right: 1px solid @l1;
 }
 
-.action:first-child {
-  border-bottom-left-radius: 10px;
+.action:hover {
+  background:
+    linear-gradient(-45deg, @l1 20px, transparent 20px),
+    linear-gradient(45deg, @l1 20px, transparent 20px),
+    @l3;
 }
 
 .action:last-child {
-  border-bottom-right-radius: 10px;
   border-right: none;
 }
 

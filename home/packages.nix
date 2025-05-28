@@ -33,6 +33,7 @@
     # C/CXX
     gcc
     pkg-config
+    gdb
 
     # GUI apps
     gimp3-with-plugins

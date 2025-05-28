@@ -843,8 +843,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1748441294,
-        "narHash": "sha256-9WdMHBow1+Hhn9v2xLfYe+83DUkNPsHxDH4W1YbKOfg=",
+        "lastModified": 1748445230,
+        "narHash": "sha256-hoTUj+mDCEqf5KIohUiAriVBCfa1P+zkUfFXIxkqaco=",
         "path": "/home/kirottu/Projects/yand",
         "type": "path"
       },
