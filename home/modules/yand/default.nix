@@ -12,5 +12,6 @@
       output = "eDP-1";
       timeout = 5;
     };
+    style = ./style.css;
   };
 }

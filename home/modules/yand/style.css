@@ -1,0 +1,43 @@
+@define-color l4 #1a000d;
+@define-color l3 #33001a;
+@define-color l2 #4d0026;
+@define-color l1 #660033;
+
+
+window {
+  background: transparent;
+}
+
+.notification {
+  background: linear-gradient(135deg, @l1 250px, @l2 250px, @l2 300px, @l1 300px);
+  margin: 10px;
+  box-shadow: 0 0 5px black;
+  border-radius: 0;
+}
+
+.summary {
+  margin: 5px;
+  font-size: 11pt;
+}
+
+.body {
+  margin: 5px;
+}
+
+.action {
+  border-radius: 0;
+  border-right: 1px solid @borders;
+}
+
+.action:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.action:last-child {
+  border-bottom-right-radius: 10px;
+  border-right: none;
+}
+
+.icon {
+  margin: 5px;
+}
