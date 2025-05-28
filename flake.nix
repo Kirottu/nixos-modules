@@ -1,0 +1,92 @@
+{
+  description = "AAAAAAAAAAAAAAA";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # anyrun = {
+    #   url = "github:anyrun-org/anyrun";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    yand = {
+      url = "path:/home/kirottu/Projects/yand";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-xr = {
+      url = "github:nix-community/nixpkgs-xr";
+    };
+
+  };
+
+  outputs =
+    inputs:
+    let
+      inherit (inputs)
+        home-manager
+        lix-module
+        nixpkgs
+        ;
+      inherit (nixpkgs) lib;
+
+      mkSystem =
+        hostname: system:
+        let
+          mylib = import ./mylib { inherit inputs hostname lib; };
+        in
+        lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system
+            ./hosts/${hostname}/system
+            lix-module.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs mylib; };
+              home-manager.users.kirottu = {
+                imports = [
+                  ./home
+                  ./hosts/${hostname}/home
+                ];
+              };
+            }
+          ];
+
+          specialArgs = { inherit inputs mylib; };
+        };
+    in
+    {
+      nixosConfigurations = {
+        missionary-of-harold = mkSystem "missionary-of-harold" "x86_64-linux";
+        church-of-harold = mkSystem "church-of-harold" "x86_64-linux";
+      };
+    };
+}

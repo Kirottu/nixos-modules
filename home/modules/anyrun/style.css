@@ -1,0 +1,73 @@
+@define-color l5 transparent;
+@define-color l4 #1a000d;
+@define-color l3 #33001a;
+@define-color l2 #4d0026;
+@define-color l1 #660033;
+
+#window {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+box#main {
+  background-color: @l4;
+  box-shadow: 0 0 5px black;
+}
+
+entry#entry {
+  min-height: 40px;
+  background: linear-gradient(135deg, @l1 400px, @l3 400px, @l3 450px, @l1 450px);
+  border-radius: 0px;
+  box-shadow: none;
+  border: none;
+}
+
+list#main {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#plugin {
+  background: transparent;
+  padding-bottom: 5px;
+}
+
+#match {
+  padding: 2.5px;
+}
+
+#match:selected {
+  background:
+    linear-gradient(135deg, @l1 30px, transparent 30px),
+    linear-gradient(-45deg, @l1 30px, transparent 30px);
+}
+
+#match:selected label#info {
+  color: #b0b0b0;
+  animation: fade 0.1s linear
+}
+
+@keyframes fade {
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #b0b0b0;
+  }
+}
+
+#match label#info {
+  color: transparent;
+}
+
+#match:hover {
+  background: transparent;
+}
+
+label#match-desc {
+  font-size: 10px;
+  color: #b0b0b0;
+}
+
+label#plugin {
+  font-size: 14px;
+}

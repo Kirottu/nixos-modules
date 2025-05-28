@@ -1,0 +1,14 @@
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 3a0b9dc98..229889ed3 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -182,6 +182,9 @@ static const struct usb_device_id quirks_table[] = {
+ 	/* Broadcom BCM2033 without firmware */
+ 	{ USB_DEVICE(0x0a5c, 0x2033), .driver_info = BTUSB_IGNORE },
+ 
++	/* Original Wii bluetooth adapter */
++	{ USB_DEVICE(0x057e, 0x0305), .driver_info = BTUSB_IGNORE },
++
+ 	/* Broadcom BCM2045 devices */
+ 	{ USB_DEVICE(0x0a5c, 0x2045), .driver_info = BTUSB_BCM2045 },
+ 

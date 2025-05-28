@@ -1,0 +1,22 @@
+system: "base16"
+name: "Adwaita"
+author: "Kirottu"
+variant: "dark"
+palette:
+  base00: "#161616"  # Background
+  base01: "#303030"  # Light Background
+  base02: "#484848"  # Selection Background
+  base03: "#606060"  # Comment
+  base04: "#dddddd"  # Dimmed Text
+  base05: "#eeeeee"  # Default Text
+  base06: "#f8f8f8"  # Light Text
+  base07: "#ffffff"  # Highlight
+  base08: "#e06c75"  # Red
+  base09: "#d19a66"  # Gold
+  base0A: "#e5c07b"  # Yellow
+  base0B: "#98c379"  # Green
+  base0C: "#56b6c2"  # Cyan
+  base0D: "#61afef"  # Blue
+  base0E: "#9141ac"  # Magenta
+  base0F: "#c688dd"  # Purple
+
