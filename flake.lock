@@ -843,14 +843,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1748445230,
-        "narHash": "sha256-hoTUj+mDCEqf5KIohUiAriVBCfa1P+zkUfFXIxkqaco=",
-        "path": "/home/kirottu/Projects/yand",
-        "type": "path"
+        "lastModified": 1748459290,
+        "narHash": "sha256-NpRrmf+6siWC/huBnLXUe5lHuSkGJq5Ef1exvUpJHzA=",
+        "owner": "Kirottu",
+        "repo": "yand",
+        "rev": "153a62410dc6d7e8f6bd6ff88eae21228b01b466",
+        "type": "github"
       },
       "original": {
-        "path": "/home/kirottu/Projects/yand",
-        "type": "path"
+        "owner": "Kirottu",
+        "repo": "yand",
+        "type": "github"
       }
     },
     "zen-browser": {
