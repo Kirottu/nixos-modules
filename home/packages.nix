@@ -17,11 +17,10 @@
     brightnessctl
     killall
     file
-    nix-du
     libnotify
-    graphviz
     usbutils
     cloc
+    unzip
 
     ## Development stuff
     # Rust

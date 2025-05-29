@@ -14,5 +14,6 @@
     ./stylix
     ./starship.nix
     ./swaync
+    ./webapps
   ];
 }

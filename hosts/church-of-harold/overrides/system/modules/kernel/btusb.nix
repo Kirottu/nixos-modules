@@ -1,7 +1,18 @@
-{ pkgs, lib, kernel }:
+{
+  pkgs,
+  lib,
+  kernel,
+}:
 pkgs.stdenv.mkDerivation {
   name = "btusb-kernel-module";
-  inherit (kernel) src version postPatch nativeBuildInputs;
+  inherit (kernel)
+    src
+    version
+    postPatch
+    nativeBuildInputs
+    ;
+
+  patches = [ ./ignore_wii_bt.patch ];
 
   modulePath = "drivers/bluetooth";
 
