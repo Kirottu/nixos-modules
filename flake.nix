@@ -55,6 +55,8 @@
         ;
       inherit (nixpkgs) lib;
 
+      secrets = builtins.fromTOML (builtins.readFile ./secrets.toml);
+
       mkSystem =
         hostname: system:
         let
@@ -70,7 +72,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs mylib; };
+              home-manager.extraSpecialArgs = { inherit inputs mylib secrets; };
               home-manager.users.kirottu = {
                 imports = [
                   ./home
@@ -80,7 +82,7 @@
             }
           ];
 
-          specialArgs = { inherit inputs mylib; };
+          specialArgs = { inherit inputs mylib secrets; };
         };
     in
     {

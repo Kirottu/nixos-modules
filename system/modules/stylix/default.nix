@@ -39,6 +39,7 @@
 
     targets = {
       plymouth = {
+        enable = true;
         logo = ./marker-resized.png;
         logoAnimated = false;
       };
