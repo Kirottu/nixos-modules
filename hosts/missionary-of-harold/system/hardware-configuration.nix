@@ -21,10 +21,29 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/37bf2d64-1d6a-4792-bbb4-42fd99c6e657";
-    fsType = "ext4";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "subvol=root" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "subvol=nix" ];
+    };
+
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+      fsType = "btrfs";
+      options = [ "subvol=swap" ];
+    };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/24A5-0A88";
@@ -37,8 +56,7 @@
 
   swapDevices = [
     {
-      device = "/var/lib/swapfile";
-      size = 12 * 1024;
+      device = "/swap/swapfile";
     }
   ];
 
