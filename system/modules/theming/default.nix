@@ -11,7 +11,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = ../../../home/modules/stylix/adwaita-dark.yaml;
+    base16Scheme = ../../../home/modules/theming/adwaita-dark.yaml;
 
     fonts = {
       serif = {

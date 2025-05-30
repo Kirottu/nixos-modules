@@ -104,7 +104,7 @@ in
               name = mod;
               value = {
                 style = "bg:${l3}";
-                format = "[via $symbol($version) ]($style)";
+                format = "[ via $symbol($version) ]($style)";
               };
             }) middle_modules
           )

@@ -89,6 +89,8 @@
     powerOnBoot = true;
   };
 
+  # Has to be enabled manually for gtklock to work
+  security.pam.services.gtklock = { };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

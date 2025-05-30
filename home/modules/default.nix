@@ -1,19 +1,21 @@
 {
   imports = [
-    ./fish.nix
-    ./niri.nix
-    # ./theming.nix
+    ./theming
     ./anyrun
     ./yand
     ./waybar
+    ./swaync
+    ./webapps
+    ./gtklock
+
+    ./fish.nix
+    ./niri.nix
     ./alacritty.nix
     ./helix.nix
     ./git.nix
     ./ssh.nix
     # ./swaybg.nix
-    ./stylix
     ./starship.nix
-    ./swaync
-    ./webapps
+    ./screen-locking.nix
   ];
 }
