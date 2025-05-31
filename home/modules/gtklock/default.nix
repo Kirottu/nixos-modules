@@ -31,13 +31,11 @@ in
 
       entry {
         min-height: 40px;
-        padding-right: 40px;
-        padding-left: 40px;
         background:
-          linear-gradient(135deg, transparent 30px, @l1 30px, @l1 100px, transparent 100px),
-          linear-gradient(-45deg, transparent 30px, @l1 30px, @l1 70px, @l3 70px, @l3 100px, @l1 100px, @l1 200px, transparent 200px);
+          linear-gradient(45deg, transparent 200px, @l3 200px, @l3 230px, transparent 230px),
+          @l1;
         border: none;
-        box-shadow: none;
+        box-shadow: 0 0 5px black;
         border-radius: 0;
       }
 

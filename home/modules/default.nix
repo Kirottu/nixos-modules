@@ -17,5 +17,6 @@
     # ./swaybg.nix
     ./starship.nix
     ./screen-locking.nix
+    ./kidex.nix
   ];
 }
