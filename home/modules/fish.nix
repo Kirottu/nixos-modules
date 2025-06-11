@@ -1,8 +1,13 @@
+let
+  flake = "path:/home/kirottu/.config/nixos";
+in
 {
   programs.fish = {
     enable = true;
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake path:/home/kirottu/.config/nixos";
+      rb-switch = "sudo nixos-rebuild switch --flake ${flake}";
+      rb-boot = "sudo nixos-rebuild boot --flake ${flake}";
+      rb-upgrade = "sudo nixos-rebuild switch --flake ${flake} --upgrade-all";
     };
     interactiveShellInit = ''
       set fish_greeting

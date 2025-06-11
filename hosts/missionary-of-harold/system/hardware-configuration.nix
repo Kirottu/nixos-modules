@@ -21,29 +21,65 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "defaults"
+      "size=100%"
+      "mode=755"
+    ];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "subvol=home" ];
-    };
+  fileSystems."/home/kirottu" = {
+    device = "none";
+    fsType = "tmpfs";
+    neededForBoot = true;
+    options = [
+      "defaults"
+      "size=25%"
+      "mode=755"
+    ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
-      fsType = "btrfs";
-      options = [ "compress=zstd" "subvol=nix" ];
-    };
+  # fileSystems."/home" = {
+  #   device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "compress=zstd"
+  #     "subvol=home"
+  #   ];
+  # };
 
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
-      fsType = "btrfs";
-      options = [ "subvol=swap" ];
-    };
+  fileSystems."/persistent" = {
+    device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = [
+      "compress=zstd"
+      "relatime"
+      "subvol=persistent"
+    ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+    fsType = "btrfs";
+    options = [
+      "compress=zstd"
+      "noatime"
+      "subvol=nix"
+    ];
+  };
+
+  fileSystems."/swap" = {
+    device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
+    fsType = "btrfs";
+    options = [
+      "subvol=swap"
+      "noatime"
+    ];
+  };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/24A5-0A88";

@@ -1,9 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   pkgs,
+  secrets,
   ...
 }:
 
@@ -68,17 +65,22 @@
   console.keyMap = "fi";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kirottu = {
-    isNormalUser = true;
-    description = "Kirottu";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "input"
-      "audio"
-    ];
-    shell = pkgs.fish;
+  users = {
+    mutableUsers = false;
+    users.kirottu = {
+      isNormalUser = true;
+      description = "Kirottu";
+      hashedPassword = secrets.users.pass-hash;
+      extraGroups = [
+        "kirottu"
+        "networkmanager"
+        "wheel"
+        "video"
+        "input"
+        "audio"
+      ];
+      shell = pkgs.fish;
+    };
   };
 
   # Allow unfree packages

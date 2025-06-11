@@ -400,6 +400,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1737831083,
+        "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "kidex": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -409,14 +424,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1748710407,
-        "narHash": "sha256-u9M9LSyxIS9q5Dh+ACfLWNkM4RcR1mYtVeTAxxf33l0=",
-        "path": "/home/kirottu/Projects/kidex",
-        "type": "path"
+        "lastModified": 1748710627,
+        "narHash": "sha256-lSZm1YTvUKiyMkFS+WV3iSucFTy46OsOx6FGb3Tpsc4=",
+        "owner": "Kirottu",
+        "repo": "kidex",
+        "rev": "8cdba4963f219ebdcd4337996864e2c553ed684b",
+        "type": "github"
       },
       "original": {
-        "path": "/home/kirottu/Projects/kidex",
-        "type": "path"
+        "owner": "Kirottu",
+        "repo": "kidex",
+        "type": "github"
       }
     },
     "lix": {
@@ -672,6 +690,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "kidex": "kidex",
         "lix-module": "lix-module",
         "niri": "niri",

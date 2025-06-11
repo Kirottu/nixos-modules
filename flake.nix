@@ -20,7 +20,7 @@
     };
 
     kidex = {
-      url = "path:/home/kirottu/Projects/kidex";
+      url = "github:Kirottu/kidex";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -43,6 +43,9 @@
       url = "github:nix-community/nixpkgs-xr";
     };
 
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
   };
 
   outputs =
