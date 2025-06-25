@@ -14,16 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yand = {
-      url = "github:Kirottu/yand";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    kidex = {
-      url = "github:Kirottu/kidex";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +36,14 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+    # My bits and bops
+    yand = {
+      url = "github:Kirottu/yand";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kidex.url = "github:Kirottu/kidex";
+    tv.url = "github:Kirottu/tv";
   };
 
   outputs =

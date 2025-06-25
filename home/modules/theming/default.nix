@@ -3,6 +3,10 @@ let
   icon-theme = "Papirus-Dark";
 
   qtctConfig = ''
+    [Fonts]
+    fixed="Hack Nerd Font,11,-1,5,50,0,0,0,0,0,Regular"
+    general="Noto Sans,11,-1,5,50,0,0,0,0,0"
+
     [Appearance]
     style=Breeze
     standard_dialogs=xdgdesktopportal

@@ -6,6 +6,7 @@
   fonts.packages = with pkgs; [
     noto-fonts-cjk-sans
     nerd-fonts.symbols-only
+    nerd-fonts.hack
   ];
 
   stylix = {
@@ -34,6 +35,8 @@
       sizes = {
         desktop = 11;
         popups = 11;
+        applications = 11;
+        terminal = 11;
       };
     };
 

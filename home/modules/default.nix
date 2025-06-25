@@ -12,11 +12,14 @@
     ./niri.nix
     ./alacritty.nix
     ./helix.nix
+    ./zed.nix
     ./git.nix
     ./ssh.nix
     # ./swaybg.nix
     ./starship.nix
     ./screen-locking.nix
     ./kidex.nix
+    ./mimeapps.nix
+    ./noisetorch.nix
   ];
 }

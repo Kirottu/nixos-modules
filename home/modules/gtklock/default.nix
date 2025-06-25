@@ -9,6 +9,8 @@ in
   programs.gtklock = {
     enable = true;
     settings.main = {
+      start-hidden = false;
+      follow-focus = true;
       time-format = "%H:%M:%S";
     };
     style = ''

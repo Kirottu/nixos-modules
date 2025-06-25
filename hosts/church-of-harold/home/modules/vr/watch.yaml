@@ -1,0 +1,76 @@
+# looking to make changes?
+# drop me in ~/.config/wlxoverlay/watch.yaml
+#
+
+width: 0.035
+
+size: [122, 120]
+
+elements:
+  - type: Button
+    rect: [2, 2, 48, 36]
+    corner_radius: 4
+    font_size: 15
+    bg_color: "#c6a0f6"
+    fg_color: "#24273a"
+    text: "C"
+    click_up: # destroy if exists, otherwise create
+      - type: Window
+        target: settings
+        action: ShowUi # only triggers if not exists
+      - type: Window
+        target: settings
+        action: Destroy # only triggers if exists since before current frame
+
+  # Keyboard button
+  - type: Button
+    rect: [2, 42, 48, 36]
+    corner_radius: 4
+    font_size: 15
+    fg_color: "#24273a"
+    bg_color: "#a6da95"
+    text: Kbd
+    click_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleVisible
+    long_click_up:
+      - type: Overlay
+        target: "kbd"
+        action: Reset
+    right_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleImmovable
+    middle_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleInteraction
+    scroll_up:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: 0.025 }
+    scroll_down:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: -0.025 }
+
+  # bottom row, of keyboard + overlays
+  - type: OverlayList
+    rect: [52, 0, 70, 120]
+    corner_radius: 4
+    font_size: 15
+    fg_color: "#cad3f5"
+    bg_color: "#1e2030"
+    layout: Vertical
+    click_up: ToggleVisible
+    long_click_up: Reset
+    right_up: ToggleImmovable
+    middle_up: ToggleInteraction
+    scroll_up:
+      Opacity: { delta: 0.025 }
+    scroll_down:
+      Opacity: { delta: -0.025 }
+

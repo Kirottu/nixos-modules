@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   # Short service declarations
-  
+
   services.udiskie = {
     enable = true;
     tray = "auto";
@@ -30,4 +30,8 @@
       WantedBy = [ "graphical-session.target" ];
     };
   };
+
+  # services.easyeffects = {
+  #   enable = true;
+  # };
 }

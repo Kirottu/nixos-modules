@@ -7,7 +7,7 @@ in
     shellAliases = {
       rb-switch = "sudo nixos-rebuild switch --flake ${flake}";
       rb-boot = "sudo nixos-rebuild boot --flake ${flake}";
-      rb-upgrade = "sudo nixos-rebuild switch --flake ${flake} --upgrade-all";
+      rb-upgrade = "nix flake update --flake ${flake} && sudo nixos-rebuild switch --flake ${flake} --upgrade-all";
     };
     interactiveShellInit = ''
       set fish_greeting

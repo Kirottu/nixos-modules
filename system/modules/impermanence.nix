@@ -1,8 +1,8 @@
-{ inputs, ... }:
+{ inputs, mylib, ... }:
 {
   imports = [
     inputs.impermanence.nixosModules.impermanence
-  ];
+  ] ++ mylib.hostSystem "modules/impermanence.nix";
 
   environment.persistence."/persistent" = {
     enable = true;
@@ -21,24 +21,32 @@
       directories = [
         "Nextcloud"
         "Downloads"
+        "Projects"
+        "Games"
         "git"
 
         ".cargo"
         ".zen"
         ".mozilla"
+        ".steam"
+        ".cache"
+        ".wine"
 
+        ".factorio"
+        ".renpy"
+
+        # Basically application managed state
+        # Should be fine to glob like this
         ".local/state"
-        ".local/share/fish"
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
+        ".local/share"
 
         ".config/Nextcloud"
         ".config/discordptb"
         ".config/dconf"
         ".config/pulse"
         ".config/nixos"
+        ".config/easyeffects"
+        ".config/heroic"
 
         {
           directory = ".pki";
@@ -55,6 +63,7 @@
       ];
       files = [
         ".config/gh/hosts.yml"
+        ".config/gtk-3.0/bookmarks"
       ];
     };
   };

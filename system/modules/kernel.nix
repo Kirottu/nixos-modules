@@ -1,7 +1,6 @@
 { lib, mylib, ... }:
 {
-  imports = []
-    ++ mylib.hostSystem "modules/kernel";
+  imports = [ ] ++ mylib.hostSystem "modules/kernel";
 
   boot = {
     kernelParams = [
@@ -11,5 +10,6 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
+    kernel.sysctl."kernel.sysrq" = 1;
   };
 }

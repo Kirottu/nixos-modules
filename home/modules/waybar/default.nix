@@ -27,6 +27,14 @@
             icon-size = 22;
             spacing = 5;
           };
+          memory = {
+            format = "<span font=\"12\">{percentage}%</span>\n<span font=\"${icon-font}\"></span>";
+            justify = "center";
+          };
+          cpu = {
+            format = "<span font=\"12\">{usage}%</span>\n<span font=\"${icon-font}\"></span>";
+            justify = "center";
+          };
           pulseaudio = {
             format = "<span font=\"12\">{volume}%</span>\n<span font=\"${icon-font}\">{icon}</span>";
             format-icons = {
@@ -61,7 +69,8 @@
             format-charging = "<span font=\"12\">{capacity}%</span>\n<span font=\"${icon-font}\"></span>";
           };
           clock = {
-            format = "<span font=\"14\">{:%H\n%M\n%S}</span>";
+            format = "<span font=\"14\">{:%d\n%m\n~\n%H\n%M}</span>";
+            justify = "center";
             interval = 1;
           };
         };

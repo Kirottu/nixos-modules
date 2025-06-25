@@ -16,8 +16,7 @@
 }
 
 #workspaces button.focused {
-  /* border-left: 4px solid @view_fg_color; */
-  background: linear-gradient(90deg, @view_fg_color 4px, transparent 4px);
+  background: linear-gradient(90deg, @view_fg_color 6px, transparent 6px);
 }
 
 #tray {
@@ -30,20 +29,29 @@
   padding-top: 30px;
 }
 
+#cpu {
+  background: linear-gradient(-150deg, @l5 25px, @l3 25px);
+  padding-top: 30px;
+}
+
 #backlight {
   background: linear-gradient(-150deg, @l4 25px, @l3 25px);
   padding-top: 30px;
 }
 
-#battery {
+#battery,
+#memory {
   background: linear-gradient(-150deg, @l3 25px, @l2 25px);
   padding-top: 30px;
 }
 
 #clock {
-  background: linear-gradient(-150deg, @l2 25px, @l1 25px);
+  background:
+    linear-gradient(-150deg, @l2 25px, @l1 25px);
+  font-family: "Hack Nerd Font";
+
   padding-top: 30px;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
 }
 
 window#waybar {

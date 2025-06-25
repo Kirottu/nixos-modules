@@ -10,8 +10,6 @@
   ] ++ mylib.hostHome "packages.nix";
 
   home.packages = with pkgs; [
-    htop
-
     # CLI tools
     imagemagick
     brightnessctl
@@ -20,10 +18,21 @@
     libnotify
     usbutils
     cloc
-    unzip
+    steam-run
+    wget
+    htop
+    gamescope
+    android-tools
+    pulseaudio
+    libqalculate
 
-    ## Development stuff
-    # Rust
+    # Compression/decompression
+    unzip
+    p7zip
+    unrar-wrapper
+
+    # Development stuff
+    ## Rust
     cargo
     clippy
     rustc
@@ -41,8 +50,8 @@
     sirikali
     pavucontrol
     nautilus
-
-    # Document related apps
+    prismlauncher
+    heroic
     papers
   ];
 

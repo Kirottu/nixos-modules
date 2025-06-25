@@ -9,13 +9,6 @@ let
     profile: title: url: icon:
     let
       data-dir = "webapps/${profile}";
-      firefox = (
-        pkgs.wrapFirefox (
-          pkgs.firefox-unwrapped.override {
-
-          }
-        )
-      );
     in
     {
       xdg.dataFile = {
@@ -37,7 +30,7 @@ let
         startupNotify = true;
         type = "Application";
         exec = lib.concatStrings [
-          "/bin/sh -c \"XAPP_FORCE_GTKWINDOW_ICON=${icon} ${lib.getExe pkgs.firefox}"
+          "/bin/sh -c \"XAPP_FORCE_GTKWINDOW_ICON=${icon} ${lib.getExe config.programs.firefox.package}"
           " --class webapp-${profile}"
           " --name webapp-${profile}"
           " --profile ${config.home.homeDirectory}/.local/share/${data-dir}" # FIXME: Surely there's a better way
@@ -57,22 +50,31 @@ lib.mkMerge [
       nativeMessagingHosts = [
         ((pkgs.callPackage ./open-in-native-client.nix { bins = [ pkgs.xdg-utils ]; }))
       ];
-      policies = {
-        DisableTelemetry = true;
-        DisableFirefoxStudies = true;
-        EnableTrackingProtection = {
-          Value = true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
+      package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+        extraPolicies = {
+          DisableTelemetry = true;
+          DisableFirefoxStudies = true;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = true;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
+          DisablePocket = true;
+          DisableFirefoxAccounts = true;
+          DisableAccounts = true;
+          DisableFirefoxScreenshots = true;
+          OverrideFirstRunPage = "";
+          OverridePostUpdatePage = "";
+          DontCheckDefaultBrowser = true;
+          ExtensionSettings = {
+            "{5610edea-88c1-4370-b93d-86aa131971d1}" = {
+              install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/open-in-internet-explorer/latest.xpi";
+              installation_mode = "force_installed";
+            };
+          };
         };
-        DisablePocket = true;
-        DisableFirefoxAccounts = true;
-        DisableAccounts = true;
-        DisableFirefoxScreenshots = true;
-        OverrideFirstRunPage = "";
-        OverridePostUpdatePage = "";
-        DontCheckDefaultBrowser = true;
+
       };
     };
   }

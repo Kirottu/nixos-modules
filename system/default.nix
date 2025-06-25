@@ -23,7 +23,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 5d";
+      options = "--delete-older-than 30d";
     };
   };
 
@@ -89,10 +89,22 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    input = {
+      General = {
+        ClassicBondedOnly = false;
+      };
+    };
   };
 
-  # Has to be enabled manually for gtklock to work
-  security.pam.services.gtklock = { };
+  security = {
+    # Has to be enabled manually for gtklock to work
+    pam.services.gtklock = { };
+    sudo.extraConfig = ''
+      Defaults lecture = never
+    '';
+  };
+
+  zramSwap.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

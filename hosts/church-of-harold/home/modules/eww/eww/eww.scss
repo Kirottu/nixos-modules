@@ -1,0 +1,30 @@
+.background {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.transition-label {
+  font-size: xx-large;
+  font-weight: bolder;
+  border-radius: 0px;
+  animation: fade-in linear 1s forwards;
+}
+
+@keyframes fade-in {
+  from {
+    color: transparent;
+    background: transparent;
+  }
+
+  to {
+    color: white;
+    background: linear-gradient(45deg,
+        #161616 30%,
+        #101010 30%,
+        #101010 40%,
+        #161616 40%,
+      );
+  }
+}
