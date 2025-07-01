@@ -26,6 +26,14 @@ in
       description = "Audio sink for the TV";
       type = lib.types.nonEmptyStr;
     };
+    tvRegex = lib.mkOption {
+      description = "Regex to identify audio device for profile selection";
+      type = lib.types.nonEmptyStr;
+    };
+    tvProfile = lib.mkOption {
+      description = "Profile index for the correct audio profile";
+      type = lib.types.int;
+    };
   };
 
   config = lib.mkIf config.graphical.tv.enable (
@@ -46,6 +54,13 @@ in
             ${toDesktop}
           else
             touch "${stateFile}"
+
+            # Pipewire insists on changing the profile of the GPU audio output,
+            # so it has to be set here
+
+            ID=$(wpctl status | grep -e "${cfg.tvRegex}" | tr -s ' ' | cut -d ' ' -f 3 | cut -d '.' -f 1)
+            
+            ${pkgs.wireplumber}/bin/wpctl set-profile $ID ${toString cfg.tvProfile}
             ${pkgs.pulseaudio}/bin/pactl set-default-sink ${cfg.tvSink}
 
             ${toTv}

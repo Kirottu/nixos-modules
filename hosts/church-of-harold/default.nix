@@ -28,7 +28,10 @@
       ];
       tvOutput = "HDMI-A-1";
       tvSink = "alsa_output.pci-0000_08_00.1.hdmi-stereo";
+      tvRegex = "Navi.*\\[alsa\\]";
+      tvProfile = 1;
       desktopSink = "alsa_output.pci-0000_0a_00.4.analog-stereo";
+
     };
     services = {
       udev = {
