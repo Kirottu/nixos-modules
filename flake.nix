@@ -44,52 +44,32 @@
 
     kidex.url = "github:Kirottu/kidex";
     tv.url = "github:Kirottu/tv";
+
+    hm-modules = {
+      url = "path:/home/kirottu/Projects/hm-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs:
     let
-      inherit (inputs)
-        home-manager
-        lix-module
-        nixpkgs
-        ;
-      inherit (nixpkgs) lib;
-
       secrets = builtins.fromTOML (builtins.readFile ./secrets.toml);
-
-      mkSystem =
-        hostname: system:
-        let
-          mylib = import ./mylib { inherit inputs hostname lib; };
-        in
-        lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./system
-            ./hosts/${hostname}/system
-            lix-module.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs mylib secrets; };
-              home-manager.users.kirottu = {
-                imports = [
-                  ./home
-                  ./hosts/${hostname}/home
-                ];
-              };
-            }
-          ];
-
-          specialArgs = { inherit inputs mylib secrets; };
-        };
+      # Overlay with some utilities
+      lib = import ./lib { inherit inputs lib; };
     in
     {
       nixosConfigurations = {
-        missionary-of-harold = mkSystem "missionary-of-harold" "x86_64-linux";
-        church-of-harold = mkSystem "church-of-harold" "x86_64-linux";
+        church-of-harold = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs lib secrets;
+          };
+          modules = [
+            inputs.lix-module.nixosModules.default
+            ./hosts/church-of-harold
+          ];
+        };
       };
     };
 }

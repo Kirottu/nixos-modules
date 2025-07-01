@@ -1,0 +1,73 @@
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options.graphical.niri.enable = lib.mkEnableOption "Niri compositor";
+
+  imports = [
+    inputs.niri.nixosModules.niri
+    ./outputs.nix
+    ./binds.nix
+    ./settings.nix
+    ./rules.nix
+  ];
+
+  config = lib.mkIf config.graphical.niri.enable {
+    cli.getty.dm.command = lib.mkIf config.cli.getty.dm.enable "niri-session";
+
+    graphical = {
+      screenLocking = {
+        gtklock.enable = true;
+        swayidle.enable = true;
+      };
+      waybar.enable = true;
+      yand.enable = true;
+      terminals.alacritty.enable = true;
+    };
+    hm.services.wpaperd.enable = true;
+
+    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    programs.niri.package = pkgs.niri-unstable;
+
+    programs.niri.enable = true;
+
+    xdg.portal = {
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    };
+
+    hm.systemd.user.services.xwayland-satellite = {
+      Unit = {
+        Description = "Xwayland outside your Wayland";
+        BindsTo = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+        Requisite = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "notify";
+        NotifyAccess = "all";
+        ExecStart = lib.getExe pkgs.xwayland-satellite;
+        StandardOutput = "journal";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+
+    impermanence.userDirectories = [
+    ];
+
+    environment.systemPackages = with pkgs; [
+      nautilus # Required for desktop portal file picking
+      pulseaudio # Used by TV switching script
+      libsecret
+      wayland-utils
+      wl-clipboard
+    ];
+  };
+}
