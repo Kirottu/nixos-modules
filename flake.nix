@@ -33,9 +33,9 @@
       url = "github:nix-community/nixpkgs-xr";
     };
 
-    impermanence = {
-      url = "github:nix-community/impermanence";
-    };
+    impermanence.url = "github:nix-community/impermanence";
+    persist-retro.url = "github:Geometer1729/persist-retro";
+
     # My bits and bops
     yand = {
       url = "github:Kirottu/yand";

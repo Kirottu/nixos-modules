@@ -41,6 +41,7 @@
 
   imports = [
     inputs.impermanence.nixosModules.impermanence
+    inputs.persist-retro.nixosModules.persist-retro
   ];
 
   config = lib.mkIf config.impermanence.enable {

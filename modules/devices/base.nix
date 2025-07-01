@@ -82,7 +82,6 @@
       userDirectories = [
         "Projects"
         "Downloads"
-        "Games"
         "git"
         ".config/dconf"
         ".local/share/flatpak" # Used for screen share tokens
