@@ -11,7 +11,6 @@
 
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
@@ -24,13 +23,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs-xr = {
       url = "github:nix-community/nixpkgs-xr";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     impermanence.url = "github:nix-community/impermanence";
@@ -42,11 +37,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kidex.url = "github:Kirottu/kidex";
-    tv.url = "github:Kirottu/tv";
+    kidex = {
+      url = "github:Kirottu/kidex";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hm-modules = {
-      url = "path:/home/kirottu/Projects/hm-modules";
+      url = "github:Kirottu/hm-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -66,8 +63,16 @@
             inherit inputs lib secrets;
           };
           modules = [
-            inputs.lix-module.nixosModules.default
             ./hosts/church-of-harold
+          ];
+        };
+        missionary-of-harold = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs lib secrets;
+          };
+          modules = [
+            ./hosts/missionary-of-harold
           ];
         };
       };

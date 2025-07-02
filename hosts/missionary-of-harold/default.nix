@@ -1,9 +1,24 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./services.nix
-    ./modules
+    ../../modules
   ];
-  networking.hostName = "missionary-of-harold";
 
+  config = {
+    devices.class = "laptop";
+
+    networking.hostName = "missionary-of-harold";
+
+    gaming = {
+      heroic.enable = true;
+      prismlauncher.enable = true;
+      umu-run.enable = true;
+      steam.enable = true;
+    };
+
+    services.btrfs.autoScrub.enable = true;
+
+    system.stateVersion = "24.11"; # Did you read the comment?
+    hm.home.stateVersion = "24.11";
+  };
 }

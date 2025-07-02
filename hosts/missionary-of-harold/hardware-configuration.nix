@@ -21,27 +21,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [
-      "defaults"
-      "size=100%"
-      "mode=755"
-    ];
-  };
-
-  fileSystems."/home/kirottu" = {
-    device = "none";
-    fsType = "tmpfs";
-    neededForBoot = true;
-    options = [
-      "defaults"
-      "size=25%"
-      "mode=755"
-    ];
-  };
-
   # fileSystems."/home" = {
   #   device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
   #   fsType = "btrfs";
@@ -51,7 +30,7 @@
   #   ];
   # };
 
-  fileSystems."/persistent" = {
+  impermanence.persistentFs = {
     device = "/dev/disk/by-uuid/41cee30b-83ad-49cc-91ac-930f389ed5d1";
     fsType = "btrfs";
     neededForBoot = true;

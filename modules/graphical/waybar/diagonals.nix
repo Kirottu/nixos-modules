@@ -81,7 +81,6 @@
               "tray"
             ];
             modules-center = [
-
             ];
             modules-right = [
               "cpu"
@@ -95,6 +94,23 @@
               "web-dp3" = "󰖟";
               "games" = "󰸻";
               "vr" = "󰢔";
+            };
+          };
+          laptop = {
+            modules-left = [
+              "niri/workspaces"
+              "tray"
+            ];
+            modules-center = [ ];
+            modules-right = [
+              "pulseaudio"
+              "backlight"
+              "battery"
+              "clock"
+            ];
+            "niri/workspaces".format-icons = {
+              "chat" = "󰭹";
+              "web" = "󰖟";
             };
           };
         }

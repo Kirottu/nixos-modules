@@ -1,9 +1,10 @@
 {
   imports = [
-    ./impermanence.nix
-    ./bluetooth.nix
     ./audio.nix
-    ./wiibt.nix
+    ./automounting.nix
     ./battery.nix
+    ./bluetooth.nix
+    ./impermanence.nix
+    ./wiibt.nix
   ];
 }

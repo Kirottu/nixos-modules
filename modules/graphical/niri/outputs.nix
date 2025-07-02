@@ -11,7 +11,6 @@
       {
         church-of-harold = {
           workspaces."chat" = {
-            # FIXME: Figure out how to build `tv` automatically with this configuration
             open-on-output = "DP-3";
           };
           workspaces."games" = {
@@ -62,6 +61,14 @@
           };
         };
         missionary-of-harold = {
+          workspaces."chat" = {
+            open-on-output = "eDP-1";
+          };
+
+          workspaces."web" = {
+            open-on-output = "eDP-1";
+          };
+
           outputs."eDP-1".scale = 1.0;
         };
       }

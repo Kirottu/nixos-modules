@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   secrets,
   ...
@@ -19,6 +17,7 @@
         dates = "weekly";
         options = "--delete-older-than 30d";
       };
+      package = pkgs.lixPackageSets.latest.lix;
     };
 
     # Bootloader.
@@ -60,7 +59,6 @@
         default = "zen-beta.desktop";
       };
     };
-    gaming.steam.enable = true;
     mainUser = {
       userName = "kirottu";
       hashedPassword = secrets.users.pass-hash;
@@ -95,8 +93,9 @@
       pipewire.enable = true;
       easyeffects.enable = true;
     };
-    theming.plymouth.enable = true;
+    automounting.enable = true;
     bluetooth.enable = true;
+    theming.plymouth.enable = true;
 
     nixpkgs.config.allowUnfree = true;
 
