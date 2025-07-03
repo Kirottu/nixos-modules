@@ -80,16 +80,8 @@
         "/etc/machine-id"
       ];
       users.${config.mainUser.userName} = {
-        directories = config.impermanence.userDirectories ++ [
-          ".cache"
-          ".local/state"
-          ".local/share"
-          {
-            directory = ".pki";
-            mode = "0700";
-          }
-        ];
-        files = config.impermanence.userFiles ++ [ ];
+        directories = config.impermanence.userDirectories;
+        files = config.impermanence.userFiles;
       };
     };
   };

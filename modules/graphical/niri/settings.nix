@@ -30,6 +30,7 @@
             tap = true;
             dwt = true;
             scroll-factor = 0.8;
+            natural-scroll = false;
           };
           focus-follows-mouse = {
             enable = true;

@@ -84,6 +84,12 @@
         ".config/dconf"
         ".local/share/flatpak" # Used for screen share tokens
         ".local/share/keyrings"
+        ".local/state"
+        ".cache"
+        {
+          directory = ".pki";
+          mode = "0700";
+        }
       ];
       userFiles = [
         ".config/gtk-3.0/bookmarks"

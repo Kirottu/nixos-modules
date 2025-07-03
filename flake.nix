@@ -29,7 +29,7 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
-    persist-retro.url = "github:Geometer1729/persist-retro";
+    persist-retro.url = "github:Kirottu/persist-retro";
 
     # My bits and bops
     yand = {

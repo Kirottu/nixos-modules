@@ -7,7 +7,10 @@
   config = {
     devices.class = "laptop";
 
-    networking.hostName = "missionary-of-harold";
+    networking = {
+      hostName = "missionary-of-harold";
+      # networkmanager.wifi.powersave = false;
+    };
 
     gaming = {
       heroic.enable = true;

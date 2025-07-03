@@ -641,15 +641,15 @@
     },
     "persist-retro": {
       "locked": {
-        "lastModified": 1709936804,
-        "narHash": "sha256-PXLha5hQLAFasIkSO4HJn9/pUbpXo8dtUKuXYYHsh6Y=",
-        "owner": "Geometer1729",
+        "lastModified": 1751562871,
+        "narHash": "sha256-icBzXV5ZHT1Sx3hOnsGMih1HomhfbLUWk3FkKAlpRq8=",
+        "owner": "Kirottu",
         "repo": "persist-retro",
-        "rev": "28b016825449dc3f893e0515abfed418baed011f",
+        "rev": "b18fea92e00f746ddce869b7bbc7e34211a43bf0",
         "type": "github"
       },
       "original": {
-        "owner": "Geometer1729",
+        "owner": "Kirottu",
         "repo": "persist-retro",
         "type": "github"
       }
