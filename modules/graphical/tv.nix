@@ -55,15 +55,15 @@ in
           else
             touch "${stateFile}"
 
+            ${toTv}
             # Pipewire insists on changing the profile of the GPU audio output,
             # so it has to be set here
 
             ID=$(wpctl status | grep -e "${cfg.tvRegex}" | tr -s ' ' | cut -d ' ' -f 3 | cut -d '.' -f 1)
             
             ${pkgs.wireplumber}/bin/wpctl set-profile $ID ${toString cfg.tvProfile}
+            sleep 1
             ${pkgs.pulseaudio}/bin/pactl set-default-sink ${cfg.tvSink}
-
-            ${toTv}
           fi
         '';
     in

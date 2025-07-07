@@ -23,11 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-xr = {
-      url = "github:nix-community/nixpkgs-xr";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     impermanence.url = "github:nix-community/impermanence";
     persist-retro.url = "github:Kirottu/persist-retro";
 

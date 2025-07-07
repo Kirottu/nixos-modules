@@ -1,0 +1,3 @@
+{
+  hm.xdg.enable = true;
+}

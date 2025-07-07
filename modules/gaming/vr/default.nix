@@ -8,11 +8,12 @@
 {
   options.gaming.vr.enable = lib.mkEnableOption "VR";
 
-  imports = [
-    inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
-  ];
-
   config = lib.mkIf config.gaming.vr.enable {
+    nix.settings = {
+      substituters = [ "https://nix-community.cachix.org" ];
+      trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    };
+
     # Needed for WiVRn
     services.avahi = {
       enable = true;
@@ -80,7 +81,7 @@
             group = 0;
           }
         ];
-        openvr-compat-path = "${pkgs.xrizer}/lib/xrizer";
+        openvr-compat-path = "${inputs.nixpkgs-xr.packages.${pkgs.system}.xrizer}/lib/xrizer";
         tcp-only = false;
       };
     };
@@ -89,7 +90,7 @@
       enable = true;
       watch = ./watch.yaml;
       openxrActions = ./openxr_actions.json5;
-      dashboard.package = pkgs.wayvr-dashboard;
+      dashboard.package = inputs.nixpkgs-xr.packages.${pkgs.system}.wayvr-dashboard;
     };
   };
 }

@@ -105,6 +105,7 @@ in
         lib.mkMerge [
           (mkLink "Documents")
           (mkLink "Pictures")
+          (mkLink "Videos")
         ];
     })
     (lib.utils.mkApp {
@@ -122,6 +123,7 @@ in
       userDirectories = [
         ".config/Smart Code ltd"
         ".local/share/Smart Code ltd"
+        ".stremio-server"
       ];
     })
   ];

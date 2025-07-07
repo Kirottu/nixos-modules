@@ -66,6 +66,6 @@
       ++ builtins.genList (i: {
         "Mod+${toString i}".action.focus-workspace = i;
         "Mod+Shift+${toString i}".action.move-column-to-workspace = i;
-      }) 9
+      }) 10
     );
 }
