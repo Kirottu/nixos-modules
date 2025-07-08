@@ -72,7 +72,8 @@
       };
     };
     net = {
-      stubby.enable = true;
+      # stubby.enable = true;
+      ctrld.enable = true;
       networkmanager.enable = true;
     };
     impermanence = {

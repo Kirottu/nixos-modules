@@ -42,6 +42,11 @@
       url = "github:Kirottu/hm-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ctrld = {
+      url = "github:Kirottu/ctrld-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

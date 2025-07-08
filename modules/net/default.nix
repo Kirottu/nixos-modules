@@ -4,6 +4,7 @@
 
   imports = [
     ./stubby.nix
+    ./ctrld.nix
   ];
 
   config = lib.mkIf config.net.networkmanager.enable {
