@@ -20,7 +20,7 @@
 
     hm.programs.fish =
       let
-        flake = "path:${config.hm.home.homeDirectory}/Projects/nixos";
+        flake = "${config.hm.home.homeDirectory}/Projects/nixos";
       in
       {
         enable = true;

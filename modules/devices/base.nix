@@ -1,6 +1,5 @@
 {
   pkgs,
-  secrets,
   ...
 }:
 {
@@ -61,7 +60,6 @@
     };
     mainUser = {
       userName = "kirottu";
-      hashedPassword = secrets.users.pass-hash;
     };
     cli = {
       starship.enable = true;
@@ -96,6 +94,7 @@
         ".config/gtk-3.0/bookmarks"
       ];
     };
+    secrets.sops.enable = true;
     audio = {
       pipewire.enable = true;
       easyeffects.enable = true;

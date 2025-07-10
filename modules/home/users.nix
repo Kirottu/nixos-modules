@@ -13,8 +13,14 @@
         type = lib.types.nonEmptyStr;
       };
       hashedPassword = lib.mkOption {
-        type = lib.types.nonEmptyStr;
+        type = with lib.types; nullOr nonEmptyStr;
+        default = null;
         description = "Password hash for user";
+      };
+      hashedPasswordFile = lib.mkOption {
+        type = with lib.types; nullOr path;
+        default = null;
+        description = "File with password hash for user";
       };
       extraGroups = lib.mkOption {
         type = with lib.types; listOf nonEmptyStr;
@@ -29,11 +35,15 @@
   };
 
   config = {
+    # TODO: Assertion to ensure one password method exists
     users = {
       mutableUsers = false;
       users.${config.mainUser.userName} = {
         isNormalUser = true;
-        hashedPassword = config.mainUser.hashedPassword;
+        hashedPassword = lib.mkIf (config.mainUser.hashedPassword != null) config.mainUser.hashedPassword;
+        hashedPasswordFile = lib.mkIf (
+          config.mainUser.hashedPasswordFile != null
+        ) config.mainUser.hashedPasswordFile;
         shell = config.mainUser.shell;
         extraGroups = config.mainUser.extraGroups ++ [
           "wheel"

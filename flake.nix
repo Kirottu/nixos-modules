@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     impermanence.url = "github:nix-community/impermanence";
     persist-retro.url = "github:Kirottu/persist-retro";
@@ -52,7 +57,6 @@
   outputs =
     inputs:
     let
-      secrets = builtins.fromTOML (builtins.readFile ./secrets.toml);
       # Overlay with some utilities
       lib = import ./lib { inherit inputs lib; };
     in
@@ -61,7 +65,7 @@
         church-of-harold = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs lib secrets;
+            inherit inputs lib;
           };
           modules = [
             ./hosts/church-of-harold
@@ -70,7 +74,7 @@
         missionary-of-harold = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs lib secrets;
+            inherit inputs lib;
           };
           modules = [
             ./hosts/missionary-of-harold

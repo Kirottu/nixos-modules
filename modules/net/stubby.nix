@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  secrets,
   ...
 }:
 {
@@ -19,8 +18,8 @@
         round_robin_upstreams = 0;
         upstream_recursive_servers = [
           {
-            address_data = secrets.stubby.address;
-            tls_auth_name = secrets.stubby.name;
+            # address_data = secrets.stubby.address;
+            # tls_auth_name = secrets.stubby.name;
           }
         ];
       };
