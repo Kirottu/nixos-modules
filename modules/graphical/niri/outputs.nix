@@ -65,6 +65,10 @@
             open-on-output = "eDP-1";
           };
 
+          workspaces."games" = {
+            open-on-output = "eDP-1";
+          };
+
           workspaces."web" = {
             open-on-output = "eDP-1";
           };

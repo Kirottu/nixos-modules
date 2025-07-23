@@ -7,6 +7,10 @@
   config.hm = lib.mkMerge [
     {
       programs.niri.settings = {
+        spawn-at-startup = [
+          { command = [ "nextcloud" ]; }
+        ];
+
         environment = {
           DISPLAY = ":0";
           NIXOS_OZONE_WL = "1";

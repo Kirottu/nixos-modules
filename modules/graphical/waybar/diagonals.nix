@@ -110,6 +110,7 @@
             ];
             "niri/workspaces".format-icons = {
               "chat" = "󰭹";
+              "games" = "󰸻";
               "web" = "󰖟";
             };
           };
@@ -129,7 +130,7 @@
       border-radius: 0px;
     }
 
-    #workspaces button.focused {
+    #workspaces button.active {
       background: linear-gradient(90deg, @view_fg_color 6px, transparent 6px);
     }
 

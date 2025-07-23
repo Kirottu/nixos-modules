@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   pkgs,
   ...
 }:
@@ -28,6 +29,12 @@
 
       programs.nh = {
         enable = true;
+
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 7d --keep 10";
+        };
+        flake = "/home/${config.mainUser.userName}/Projects/nixos";
       };
     }
     (lib.utils.mkApp {

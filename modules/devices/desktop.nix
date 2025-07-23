@@ -11,13 +11,19 @@
     boot = {
       kernelPackages = (pkgs.linuxPackagesFor pkgs.linuxKernel.kernels.linux_zen);
       kernelParams = [
-        "mitigations=off"
+        # "mitigations=off"
       ];
     };
 
     services.scx = {
       enable = true;
       scheduler = "scx_flash";
+      extraArgs = [
+        "-T"
+      ];
+      package = pkgs.scx.rustscheds;
     };
+
+    powerManagement.cpuFreqGovernor = "performance";
   };
 }

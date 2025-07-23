@@ -27,7 +27,8 @@
         shellAliases = {
           nhs = "nh os switch ${flake} -a";
           nhb = "nh os boot ${flake} -a";
-          nhu = "nh os switch ${flake} -u -a";
+          nhus = "nh os switch ${flake} -u -a";
+          nhub = "nh os boot ${flake} -u -a";
         };
         interactiveShellInit = lib.concatStrings (
           lib.flatten [

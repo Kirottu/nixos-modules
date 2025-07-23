@@ -53,6 +53,9 @@
 
     programs.droidcam.enable = true;
 
+    # Workaround for cursor corruption after suspend
+    hm.programs.niri.settings.debug.disable-cursor-plane = [ ];
+
     wiibt.enable = true;
 
     system.stateVersion = "24.11"; # Did you read the comment?
