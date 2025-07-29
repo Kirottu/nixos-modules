@@ -91,6 +91,11 @@
       watch = ./watch.yaml;
       openxrActions = ./openxr_actions.json5;
       dashboard.package = inputs.nixpkgs-xr.packages.${pkgs.system}.wayvr-dashboard;
+      settings = {
+        notification_topics = {
+          desktop_notifications = "watch";
+        };
+      };
     };
   };
 }

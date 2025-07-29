@@ -14,6 +14,7 @@ in
     prismlauncher.enable = lib.mkEnableOption "Prism Launcher";
     steam.enable = lib.mkEnableOption "Steam";
     umu-run.enable = lib.mkEnableOption "UMU Launcher";
+    r2modman.enable = lib.mkEnableOption "r2modman";
   };
 
   config = lib.mkMerge [
@@ -70,6 +71,15 @@ in
       lib.utils.mkApp {
         package = pkgs.prismlauncher;
         userDirectories = [ ".local/share/PrismLauncher" ];
+      }
+    ))
+    (lib.mkIf cfg.r2modman.enable (
+      lib.utils.mkApp {
+        package = pkgs.r2modman;
+        userDirectories = [
+          ".config/r2modman"
+          ".config/r2modmanPlus-local"
+        ];
       }
     ))
   ];

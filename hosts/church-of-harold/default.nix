@@ -17,6 +17,7 @@
       prismlauncher.enable = true;
       umu-run.enable = true;
       steam.enable = true;
+      r2modman.enable = true;
     };
     # graphical.eww.enable = true;
     graphical.tv = {
