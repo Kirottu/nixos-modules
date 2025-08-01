@@ -90,6 +90,15 @@
         "qt6ct/qt6ct.conf".text = lib.mkForce qtctConfig;
       };
 
+      # Stylix does not set this automatically, and as of FF 141 this is
+      # required for FF to respect the dark theme
+      # TODO: Should probably be upstreamed
+      hm.dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+      };
+
       hm.stylix = {
         base16Scheme = config.theming.colorScheme;
         polarity = "dark";
