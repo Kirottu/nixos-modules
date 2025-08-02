@@ -59,6 +59,12 @@
     impermanence.userDirectories = [
     ];
 
+    services.system76-scheduler.assignments = {
+      desktop-environment = {
+        matchers = [ "niri" ];
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       nautilus # Required for desktop portal file picking
       pulseaudio # Used by TV switching script

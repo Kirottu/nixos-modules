@@ -10,5 +10,6 @@
     ./net
     ./security
     ./theming
+    ./perf
   ];
 }

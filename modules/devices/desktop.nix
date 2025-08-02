@@ -17,9 +17,9 @@
 
     services.scx = {
       enable = true;
-      scheduler = "scx_flash";
+      scheduler = "scx_lavd";
       extraArgs = [
-        "-T"
+        "--autopower"
       ];
       package = pkgs.scx.rustscheds;
     };
