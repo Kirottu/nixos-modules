@@ -40,6 +40,16 @@
       inputs.hm-modules.homeModules.wlx-overlay-s
     ];
 
+    services.system76-scheduler.assignments.vr = {
+      nice = -12;
+      ioClass = "realtime";
+      ioPrio = 0;
+      matchers = [
+        "wivrn-server"
+        "wlx-overlay-s"
+      ];
+    };
+
     hm.programs.wivrn = {
       enable = true;
       autostart = ''

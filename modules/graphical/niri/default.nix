@@ -65,6 +65,12 @@
       };
     };
 
+    hm.imports = [
+      inputs.system76-scheduler-niri.homeModules.system76-scheduler-niri
+    ];
+
+    hm.services.system76-scheduler-niri.enable = config.perf.s76-scheduler.enable;
+
     environment.systemPackages = with pkgs; [
       nautilus # Required for desktop portal file picking
       pulseaudio # Used by TV switching script

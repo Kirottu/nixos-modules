@@ -51,6 +51,10 @@
         # Ask clients to omit client side decorations
         prefer-no-csd = true;
 
+        cursor = {
+          hide-when-typing = true;
+        };
+
         animations = {
           window-close = {
             kind.spring = {

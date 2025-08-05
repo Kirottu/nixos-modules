@@ -17,6 +17,7 @@
           "Mod+F4".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
 
           "Mod+Shift+S".action = spawn "systemctl" "suspend";
+          "Mod+Shift+L".action = spawn "loginctl" "lock-session";
 
           "Mod+R" = {
             repeat = false;
