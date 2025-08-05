@@ -50,6 +50,7 @@
         NotifyAccess = "all";
         ExecStart = lib.getExe pkgs.xwayland-satellite;
         StandardOutput = "journal";
+        Restart = "on-failure";
       };
       Install = {
         WantedBy = [ "graphical-session.target" ];
