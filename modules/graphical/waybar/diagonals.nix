@@ -73,6 +73,18 @@
             justify = "center";
             interval = 1;
           };
+          power-profiles-daemon = {
+            format = "<span font=\"${icon-font}\">{icon}</span>";
+            tooltip-format = "Power profile: {profile}\nDriver: {driver}";
+            tooltip = true;
+            format-icons = {
+              default = "";
+              performance = "";
+              balanced = "";
+              power-saver = "";
+            };
+          };
+
         }
         {
           desktop = {
@@ -106,6 +118,7 @@
               "pulseaudio"
               "backlight"
               "battery"
+              "power-profiles-daemon"
               "clock"
             ];
             "niri/workspaces".format-icons = {
@@ -158,6 +171,10 @@
     #memory {
       background: linear-gradient(-150deg, ${l3} 25px, ${l2} 25px);
       padding-top: 30px;
+    }
+
+    #power-profiles-daemon {
+      background: ${l2}
     }
 
     #clock {
