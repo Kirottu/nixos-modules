@@ -11,7 +11,6 @@ in
   options.gaming = {
     dolphin-emu.enable = lib.mkEnableOption "Dolphin Emulator";
     heroic.enable = lib.mkEnableOption "Heroic games launcher";
-    prismlauncher.enable = lib.mkEnableOption "Prism Launcher";
     steam.enable = lib.mkEnableOption "Steam";
     umu-run.enable = lib.mkEnableOption "UMU Launcher";
     r2modman.enable = lib.mkEnableOption "r2modman";
