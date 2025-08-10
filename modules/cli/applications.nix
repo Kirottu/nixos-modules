@@ -17,7 +17,6 @@
         cloc
         steam-run
         wget
-        gamescope
         android-tools
         pulseaudio
         unzip

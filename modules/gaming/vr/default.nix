@@ -103,7 +103,7 @@
       dashboard.package = inputs.nixpkgs-xr.packages.${pkgs.system}.wayvr-dashboard;
       settings = {
         notification_topics = {
-          desktop_notifications = "watch";
+          DesktopNotification = "Watch";
         };
       };
     };

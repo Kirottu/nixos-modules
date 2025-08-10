@@ -21,6 +21,12 @@ in
   ];
 
   config = lib.mkMerge [
+    {
+      programs.gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
+    }
     (lib.mkIf cfg.umu-run.enable (
       lib.utils.mkApp {
         package = pkgs.umu-launcher;
