@@ -32,7 +32,7 @@
             "10-clock-rate" = {
               "context.properties" = {
                 "default.clock.quantum" = 2048;
-                "default.clock.min-quantum" = 2048;
+                "default.clock.min-quantum" = 512;
               };
             };
           };
