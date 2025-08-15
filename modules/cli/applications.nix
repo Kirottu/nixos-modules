@@ -5,6 +5,7 @@
   ...
 }:
 {
+  # FIXME: Needs to be more configurable
   config = lib.mkMerge [
     {
       environment.systemPackages = with pkgs; [
