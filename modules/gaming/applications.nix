@@ -65,6 +65,10 @@ in
         ".local/share/Steam"
       ];
 
+      environment.systemPackages = [
+        pkgs.steam-run
+      ];
+
       programs.steam = {
         enable = true;
         extest.enable = true;

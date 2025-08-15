@@ -6,6 +6,7 @@
       type = lib.types.enum [
         "desktop"
         "laptop"
+        "server"
       ];
     };
   };
@@ -13,6 +14,7 @@
   imports = [
     ./desktop.nix
     ./laptop.nix
+    ./graphical.nix
     ./base.nix
   ];
 }

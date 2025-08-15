@@ -15,10 +15,8 @@
         libnotify
         usbutils
         cloc
-        steam-run
         wget
         android-tools
-        pulseaudio
         unzip
         p7zip
         unrar-wrapper

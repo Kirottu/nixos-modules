@@ -15,6 +15,7 @@
       environment.systemPackages = with pkgs; [
         pwvucontrol
         helvum
+        pulseaudio
       ];
 
       impermanence.userDirectories = [ ".config/pulse" ];
