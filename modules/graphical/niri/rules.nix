@@ -20,5 +20,13 @@
       ];
       open-on-workspace = "games";
     }
+    {
+      matches = [
+        {
+          app-id = "^aslains_wows_modpack.*";
+        }
+      ];
+      open-floating = true;
+    }
   ];
 }
