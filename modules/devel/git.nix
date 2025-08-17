@@ -2,8 +2,8 @@
   config = {
     hm.programs.git = {
       enable = true;
-      userEmail = "arnovaara@gmail.com";
-      userName = "Kirottu";
+      userEmail = "arnovaara@kirottu.com";
+      userName = "Arno Vaara";
       signing.signByDefault = true;
       extraConfig = {
         init.defaultBranch = "main";
