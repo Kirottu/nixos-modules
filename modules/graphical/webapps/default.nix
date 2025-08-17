@@ -22,7 +22,7 @@
                 description = "Url for the website";
               };
               icon = lib.mkOption {
-                type = lib.types.nonEmptyStr;
+                type = lib.types.path;
                 description = "Icon name for the desktop entry";
               };
             };
