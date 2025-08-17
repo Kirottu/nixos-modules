@@ -23,6 +23,8 @@
             l3 = "#33001a";
             l2 = "#4d0026";
             l1 = "#660033";
+            # Subthemes: vertical, overview
+            subtheme = "vertical";
           };
         }
         .${config.theming.theme};

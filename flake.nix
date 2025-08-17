@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:Kirottu/home-manager/anyrun-margin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -55,6 +55,11 @@
 
     system76-scheduler-niri = {
       url = "github:Kirottu/system76-scheduler-niri";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

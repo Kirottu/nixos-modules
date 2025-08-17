@@ -86,15 +86,6 @@
       ];
     })
     (lib.utils.mkApp {
-      package = pkgs.gnupg;
-      userDirectories = [
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-      ];
-    })
-    (lib.utils.mkApp {
       package = pkgs.libqalculate; # TODO: HM module
       userDirectories = [ ".config/qalculate" ];
     })

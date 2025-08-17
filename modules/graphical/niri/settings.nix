@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -17,9 +18,6 @@
         };
 
         gestures.hot-corners.enable = false;
-        overview = {
-          zoom = 0.25;
-        };
 
         # Input config
         input = {
@@ -29,6 +27,10 @@
             };
             repeat-delay = 300;
             repeat-rate = 40;
+          };
+          mouse = {
+            accel-profile = "flat";
+            accel-speed = -0.2;
           };
           touchpad = {
             tap = true;
@@ -78,20 +80,56 @@
       };
     }
     {
-      diagonals = {
-        programs.niri.settings = {
-          overview.backdrop-color = "#101010";
-          layout = {
-            border = {
-              enable = true;
-              width = 4;
-              active.color = config.theming.themeAttrs.l1;
-              inactive.color = "#000000";
+      diagonals = lib.mkMerge [
+        {
+          programs.niri.settings = {
+            overview.backdrop-color = "#090909";
+            layout = {
+              border = {
+                enable = true;
+                width = 4;
+                active.color = config.theming.themeAttrs.l1;
+                inactive.color = "#000000";
+              };
             };
-            struts.right = 45;
           };
-        };
-      };
+        }
+        {
+          vertical = {
+            programs.niri.settings = {
+              overview = {
+                zoom = 0.25;
+              };
+              layout.struts.right = 45;
+            };
+          };
+          overview = {
+            programs.niri.settings = {
+              spawn-at-startup = [
+                {
+                  command = [
+                    "sh"
+                    "-c"
+                    "niri msg -j event-stream | ${pkgs.writeShellScript "niri-overview-monitor" ''
+                      while read line; do
+                        overview=$(echo $line | ${pkgs.jq} '.OverviewOpenedOrClosed.is_open')
+
+                        if [ $overview == "false" ]; then
+                          killall .anyrun-wrapped
+                        fi
+                      done                                            
+                    ''}"
+                  ];
+                }
+              ];
+              overview = {
+                zoom = 0.75;
+              };
+            };
+          };
+        }
+        .${config.theming.themeAttrs.subtheme}
+      ];
     }
     .${config.theming.theme}
   ];

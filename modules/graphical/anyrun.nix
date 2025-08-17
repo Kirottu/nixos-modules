@@ -2,106 +2,155 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
+let
+  pkg = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
+in
 {
   options.anyrun.enable = lib.mkEnableOption "Anyrun";
 
   config = {
     hm.programs.anyrun = {
+      package = pkg;
       enable = true;
       config = {
         x = {
           fraction = 0.5;
         };
-        y = {
-          fraction = 0.2;
-        };
+        y =
+          {
+            diagonals =
+              {
+                vertical = {
+                  fraction = 0.2;
+                };
+                overview = {
+                  absolute = 80;
+                };
+              }
+              .${config.theming.themeAttrs.subtheme};
+          }
+          .${config.theming.theme};
         width = {
           absolute = 800;
         };
+        margin = 10;
         hidePluginInfo = true;
         ignoreExclusiveZones = true;
         plugins = [
-          "${pkgs.anyrun}/lib/libapplications.so"
-          "${pkgs.anyrun}/lib/libsymbols.so"
-          "${pkgs.anyrun}/lib/libkidex.so"
-          "${pkgs.anyrun}/lib/librink.so"
-          "${pkgs.anyrun}/lib/libtranslate.so"
+          "${pkg}/lib/libapplications.so"
+          "${pkg}/lib/libnix_run.so"
+          "${pkg}/lib/libsymbols.so"
+          "${pkg}/lib/libkidex.so"
+          "${pkg}/lib/librink.so"
+          "${pkg}/lib/libtranslate.so"
         ];
       };
 
       extraCss =
         with config.theming.themeAttrs;
         {
-          diagonals = ''
-            #window {
-              background-color: rgba(0, 0, 0, 0);
-            }
+          diagonals = lib.concatStrings [
+            ''
+              #window {
+                background-color: rgba(0, 0, 0, 0);
+              }
 
-            box#main {
-              background-color: ${l4};
-              box-shadow: 0 0 5px black;
-            }
+              #plugin {
+                background: transparent;
+                padding-bottom: 5px;
+              }
 
-            entry#entry {
-              min-height: 40px;
-              background: linear-gradient(135deg, ${l1} 400px, ${l3} 400px, ${l3} 450px, ${l1} 450px);
-              border-radius: 0px;
-              box-shadow: none;
-              border: none;
-            }
+              #match {
+                padding: 2.5px;
+              }
 
-            list#main {
-              background-color: rgba(0, 0, 0, 0);
-            }
+              #match:selected {
+                background:
+                  linear-gradient(135deg, ${l1} 30px, transparent 30px),
+                  linear-gradient(-45deg, ${l1} 30px, transparent 30px);
+              }
 
-            #plugin {
-              background: transparent;
-              padding-bottom: 5px;
-            }
+              #match:selected label#info {
+                color: #b0b0b0;
+                animation: fade 0.1s linear
+              }
 
-            #match {
-              padding: 2.5px;
-            }
+              @keyframes fade {
+                0% {
+                  color: transparent;
+                }
 
-            #match:selected {
-              background:
-                linear-gradient(135deg, ${l1} 30px, transparent 30px),
-                linear-gradient(-45deg, ${l1} 30px, transparent 30px);
-            }
+                100% {
+                  color: #b0b0b0;
+                }
+              }
 
-            #match:selected label#info {
-              color: #b0b0b0;
-              animation: fade 0.1s linear
-            }
-
-            @keyframes fade {
-              0% {
+              #match label#info {
                 color: transparent;
               }
 
-              100% {
+              #match:hover {
+                background: transparent;
+              }
+
+              label#match-desc {
+                font-size: 10px;
                 color: #b0b0b0;
               }
-            }
 
-            #match label#info {
-              color: transparent;
-            }
+              label#plugin {
+                font-size: 14px;
+              }
+            ''
+            {
+              vertical = ''
+                box#main {
+                  background-color: ${l4};
+                  box-shadow: 0 0 5px black;
+                }
 
-            #match:hover {
-              background: transparent;
-            }
+                list#main {
+                  background-color: rgba(0, 0, 0, 0);
+                }
 
-            label#match-desc {
-              font-size: 10px;
-              color: #b0b0b0;
+                entry#entry {
+                  min-height: 40px;
+                  background: linear-gradient(135deg, ${l1} 400px, ${l3} 400px, ${l3} 450px, ${l1} 450px);
+                  border-radius: 0px;
+                  box-shadow: none;
+                  border: none;
+                }
+              '';
+              overview = ''
+                box#main {
+                  background-color: transparent;
+                }
+                list#main {
+                  margin-top: 100px;
+                  background-color: ${l4};
+                  box-shadow: 0 0 5px black;
+                }
+                entry#entry {
+                  min-height: 30px;
+                  background:
+                    linear-gradient(135deg, transparent 100px, ${l3} 100px, ${l3} 120px, transparent 120px),
+                    linear-gradient(135deg, transparent 25px, ${l1} 25px, ${l1} 50%, transparent 50%),
+                    linear-gradient(-45deg, transparent 25px, ${l1} 25px, ${l1} 50%, transparent 50%);
+                  border-radius: 0px;
+                  box-shadow: none;
+                  border: none;
+                  padding-left: 40px;
+                  padding-right: 40px;
+                  margin-left: 200px;
+                  margin-right: 200px;
+                }
+              '';
             }
-
-            label#plugin {
-              font-size: 14px;
-            }          '';
+            .${subtheme}
+          ];
         }
         .${config.theming.theme};
     };

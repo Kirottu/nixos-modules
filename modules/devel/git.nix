@@ -4,6 +4,7 @@
       enable = true;
       userEmail = "arnovaara@gmail.com";
       userName = "Kirottu";
+      signing.signByDefault = true;
       extraConfig = {
         init.defaultBranch = "main";
       };

@@ -65,7 +65,17 @@
     };
     automounting.enable = true;
     bluetooth.enable = true;
-    theming.plymouth.enable = true;
+    theming = {
+      plymouth.enable = true;
+      theme = "diagonals";
+      themeAttrs = {
+        l4 = "#1a000d";
+        l3 = "#33001a";
+        l2 = "#4d0026";
+        l1 = "#660033";
+        subtheme = "overview";
+      };
+    };
 
     nixpkgs.config.allowUnfree = true;
 

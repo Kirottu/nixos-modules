@@ -13,16 +13,10 @@
         {
           # Application binds
           "Mod+Return".action = spawn "alacritty";
-          "Mod+D".action = spawn "anyrun";
           "Mod+F4".action = spawn "${lib.getExe pkgs.playerctl}" "play-pause";
 
           "Mod+Shift+S".action = spawn "systemctl" "suspend";
           "Mod+Shift+L".action = spawn "loginctl" "lock-session";
-
-          "Mod+R" = {
-            repeat = false;
-            action = toggle-overview;
-          };
 
           # Window management
           "Mod+Shift+Q".action = close-window;
@@ -49,6 +43,7 @@
           "Mod+Period".action = set-column-width "+10%";
 
           "Print".action = screenshot;
+          "Shift+Print".action.screenshot-screen = [ ];
           "Mod+Shift+E".action = quit;
         }
         {
@@ -63,6 +58,42 @@
           };
         }
         .${config.devices.class}
+        {
+          diagonals =
+            {
+              vertical = {
+                "Mod+R" = {
+                  repeat = false;
+                  action = toggle-overview;
+                };
+                "Mod+D".action = spawn "anyrun";
+              };
+              overview = {
+                "Mod+D" =
+                  let
+                    lockfile = "/tmp/niri-overview";
+                  in
+                  {
+                    repeat = false;
+                    action = spawn "${pkgs.writeShellScript "niri-overview" ''
+                      if [ ! -f ${lockfile} ]; then
+                        touch ${lockfile}
+                        niri msg action open-overview
+                        killall -SIGUSR1 .waybar-wrapped
+                        anyrun
+                        killall -SIGUSR1 .waybar-wrapped
+                        niri msg action close-overview
+                        rm ${lockfile}
+                      else
+                        killall .anyrun-wrapped
+                      fi
+                    ''}";
+                  };
+              };
+            }
+            .${config.theming.themeAttrs.subtheme};
+        }
+        .${config.theming.theme}
       ]
       ++ builtins.genList (i: {
         "Mod+${toString i}".action.focus-workspace = i;
