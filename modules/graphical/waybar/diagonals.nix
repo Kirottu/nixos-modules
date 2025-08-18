@@ -375,7 +375,7 @@
           transition-l3 =
             {
               desktop = "transparent";
-              laptop = transition-l3;
+              laptop = l3;
             }
             .${config.devices.class};
         in
