@@ -192,7 +192,7 @@
               spacing = 5;
             };
             pulseaudio = {
-              format = "<span font=\"12\">{volume}%</span>\n${icon "{icon}"}";
+              format = "${icon "{icon}"} <span font=\"12\">{volume}%</span>";
               format-icons = {
                 default = [
                   "󰕿"
@@ -204,7 +204,7 @@
               justify = "center";
             };
             backlight = {
-              format = "<span font=\"12\">{percent}%</span>\n${icon "{icon}"}";
+              format = "${icon "{icon}"} <span font=\"12\">{percent}%</span>";
               format-icons = [
                 "󰃞"
                 "󰃟"
@@ -278,8 +278,8 @@
                 "backlight"
               ];
               modules-right = [
-                "tray"
                 "pulseaudio"
+                "tray"
               ];
             };
             bottom = {
@@ -423,7 +423,8 @@
           }
 
           #power-profiles-daemon {
-            background: ${l3}
+            background: ${l3};
+            padding-right: 10px;
           }
 
           #backlight {
@@ -434,7 +435,7 @@
 
           #pulseaudio {
             background:
-              linear-gradient(-45deg, ${l2} 25px, transparent 25px);
+              linear-gradient(135deg, transparent 25px, ${l2} 25px);
             padding-left: 40px;
           }
 
