@@ -100,6 +100,7 @@
           color-scheme = "prefer-dark";
         };
       };
+      gtk.iconCache.enable = true;
 
       hm.stylix = {
         base16Scheme = config.theming.colorScheme;

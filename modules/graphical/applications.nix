@@ -28,6 +28,7 @@ in
       environment.systemPackages = with pkgs; [
         sirikali
         pavucontrol
+        kdiskmark
         papers
       ];
       hm.xdg.mimeApps = {

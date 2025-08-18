@@ -40,6 +40,7 @@ in
         hidePluginInfo = true;
         ignoreExclusiveZones = true;
         plugins = [
+          "${pkg}/lib/libniri_focus.so"
           "${pkg}/lib/libapplications.so"
           "${pkg}/lib/libnix_run.so"
           "${pkg}/lib/libsymbols.so"
@@ -49,6 +50,20 @@ in
         ];
       };
 
+      extraConfigFiles = {
+        "symbols.ron".text = ''
+          Config(
+            prefix: ":s ",
+            symbols: {},
+            max_entries: 3,
+          )
+        '';
+        "niri-focus.ron".text = ''
+          Config(
+            max_entries: 3,
+          )
+        '';
+      };
       extraCss =
         with config.theming.themeAttrs;
         {

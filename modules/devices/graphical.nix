@@ -76,6 +76,7 @@
         subtheme = "overview";
       };
     };
+    daemons.kidex.enable = true;
 
     nixpkgs.config.allowUnfree = true;
 

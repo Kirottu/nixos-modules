@@ -83,7 +83,6 @@
       diagonals = lib.mkMerge [
         {
           programs.niri.settings = {
-            overview.backdrop-color = "#090909";
             layout = {
               border = {
                 enable = true;
@@ -99,6 +98,7 @@
             programs.niri.settings = {
               overview = {
                 zoom = 0.25;
+                backdrop-color = "#090909";
               };
               layout.struts.right = 45;
             };
@@ -114,7 +114,7 @@
                       while read line; do
                         overview=$(echo $line | ${pkgs.jq} '.OverviewOpenedOrClosed.is_open')
 
-                        if [ $overview == "false" ]; then
+                        if [ $overview = "false" ]; then
                           killall .anyrun-wrapped
                         fi
                       done                                            
@@ -123,6 +123,7 @@
                 }
               ];
               overview = {
+                backdrop-color = "#040404";
                 zoom = 0.75;
               };
             };
