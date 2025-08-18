@@ -19,15 +19,15 @@ in
       settings = {
         directories = [
           {
-            path = "${config.home.homeDirectory}/Documents";
+            path = "${config.hm.home.homeDirectory}/Documents";
             recurse = true;
           }
           {
-            path = "${config.home.homeDirectory}/Pictures";
+            path = "${config.hm.home.homeDirectory}/Pictures";
             recurse = true;
           }
           {
-            path = "${config.home.homeDirectory}/Downloads";
+            path = "${config.hm.home.homeDirectory}/Downloads";
             recurse = false;
           }
         ];
