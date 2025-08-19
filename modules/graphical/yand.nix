@@ -4,10 +4,19 @@
   inputs,
   ...
 }:
+let
+  cfg = config.graphical.yand;
+in
 {
-  options.graphical.yand.enable = lib.mkEnableOption "Yand";
+  options.graphical.yand = {
+    enable = lib.mkEnableOption "Yand";
+    output = lib.mkOption {
+      type = with lib.types; nullOr str;
 
-  config = lib.mkIf config.graphical.yand.enable {
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
     hm.imports = [
       inputs.yand.homeModules.yand
     ];
@@ -18,12 +27,7 @@
         width = 400;
         spacing = 10;
         timeout = 5;
-        output =
-          {
-            church-of-harold = "DP-3";
-            missionary-of-harold = "eDP-1";
-          }
-          .${config.networking.hostName};
+        output = lib.mkIf (cfg.output != null) cfg.output;
       };
       style =
         with config.theming.themeAttrs;

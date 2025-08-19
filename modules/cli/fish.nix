@@ -25,6 +25,7 @@
       {
         enable = true;
         shellAliases = {
+          nd = "nix develop -c fish";
           nhs = "nh os switch ${flake} -a";
           nhb = "nh os boot ${flake} -a";
           nhus = "nh os switch ${flake} -u -a";

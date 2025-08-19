@@ -213,40 +213,42 @@
               justify = "center";
             };
           };
-          left = {
-            start_hidden = true;
-            exclusive = false;
-            layer = "top";
-            position = "left";
-            modules-center = [ "cffi/niri-overflow" ];
-            "cffi/niri-overflow" = {
-              module_path = "${
-                inputs.waybar-niri-overflow.packages.${pkgs.system}.default
-              }/lib/libwaybar_niri_overflow.so";
-              format = "${icon " <span rise=\"-1.5pt\">{n}</span>"}";
-              class = "niri-overflow-left";
-              align = "start";
-              hide_when_zero = false;
-              direction = "left";
-            };
-          };
-          right = {
-            start_hidden = true;
-            exclusive = false;
-            layer = "top";
-            position = "right";
-            modules-center = [ "cffi/niri-overflow" ];
-            "cffi/niri-overflow" = {
-              module_path = "${
-                inputs.waybar-niri-overflow.packages.${pkgs.system}.default
-              }/lib/libwaybar_niri_overflow.so";
-              format = "${icon "<span rise=\"-1.5pt\">{n}</span> "}";
-              class = "niri-overflow-right";
-              align = "end";
-              hide_when_zero = false;
-              direction = "right";
-            };
-          };
+          # left = {
+          #   start_hidden = true;
+          #   exclusive = false;
+          #   layer = "top";
+          #   position = "left";
+          #   modules-center = [ "cffi/niri-overflow" ];
+          #   "cffi/niri-overflow" = {
+          #     module_path = "${
+          #       inputs.waybar-niri-overflow.packages.${pkgs.system}.default
+          #     }/lib/libwaybar_niri_overflow.so";
+          #     format = "${icon "<span rise=\"-1.5pt\">{n}</span>\n"}";
+          #     class = "niri-overflow-left";
+          #     align = "center";
+          #     justify = "center";
+          #     hide_when_zero = false;
+          #     direction = "left";
+          #   };
+          # };
+          # right = {
+          #   start_hidden = true;
+          #   exclusive = false;
+          #   layer = "top";
+          #   position = "right";
+          #   modules-center = [ "cffi/niri-overflow" ];
+          #   "cffi/niri-overflow" = {
+          #     module_path = "${
+          #       inputs.waybar-niri-overflow.packages.${pkgs.system}.default
+          #     }/lib/libwaybar_niri_overflow.so";
+          #     format = "${icon "<span rise=\"-1.5pt\">{n}</span>\n"}";
+          #     class = "niri-overflow-right";
+          #     align = "center";
+          #     hide_when_zero = false;
+          #     justify = "center";
+          #     direction = "right";
+          #   };
+          # };
         }
         {
           desktop = {
@@ -453,34 +455,39 @@
           }
 
           #workspaces button.active {
-            /*background: linear-gradient(135deg, transparent 11px, ${l3} 11px, ${l3} 39px, transparent 39px);*/
-            color: ${l4};
+            background: linear-gradient(0deg, @view_fg_color 4px, transparent 4px);
           }
 
           #niri-overflow-left {
           	padding-top: 30px;
           	padding-bottom: 30px;
           	padding-left: 5px;
-          	min-width: 50px;
+          	min-width: 20px;
           	background:
-          	  linear-gradient(-157.5deg, transparent 25px, #660033 25px, #660033 51%, transparent 51%),
-              linear-gradient(-22.5deg, transparent 25px, #660033 25px, #660033 51%, transparent 51%),
-              linear-gradient(0deg, transparent 30px, #660033 30px, #660033 50%, transparent 50%),
-              linear-gradient(180deg, transparent 30px, #660033 30px, #660033 50%, transparent 50%);
+          	  linear-gradient(-157.5deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%),
+              linear-gradient(-22.5deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%),
+              linear-gradient(0deg, transparent 30px, ${l1} 30px, ${l1} 50%, transparent 50%),
+              linear-gradient(180deg, transparent 30px, ${l1} 30px, ${l1} 50%, transparent 50%);
           }
           #niri-overflow-right {
           	padding-top: 30px;
           	padding-bottom: 30px;
           	padding-right: 5px;
-          	min-width: 50px;
+          	min-width: 20px;
           	background:
-          	  linear-gradient(157.5deg, transparent 25px, #660033 25px, #660033 51%, transparent 51%),
-              linear-gradient(22.5deg, transparent 25px, #660033 25px, #660033 51%, transparent 51%),
-              linear-gradient(0deg, transparent 30px, #660033 30px, #660033 50%, transparent 50%),
-              linear-gradient(180deg, transparent 30px, #660033 30px, #660033 50%, transparent 50%);
+          	  linear-gradient(157.5deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%),
+              linear-gradient(22.5deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%),
+              linear-gradient(0deg, transparent 30px, ${l1} 30px, ${l1} 50%, transparent 50%),
+              linear-gradient(180deg, transparent 30px, ${l1} 30px, ${l1} 50%, transparent 50%);
           }
 
-          window#waybar {
+          window#waybar.top,
+          window#waybar.bottom {
+            background: linear-gradient(90deg, transparent 10%, ${l4} 10%, ${l4} 90%, transparent 90%);
+          }
+
+          window#waybar.left,
+          window#waybar.right {
             background: transparent;
           }
         '';

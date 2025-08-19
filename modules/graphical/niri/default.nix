@@ -6,11 +6,16 @@
   ...
 }:
 {
-  options.graphical.niri.enable = lib.mkEnableOption "Niri compositor";
+  options.graphical.niri = {
+    enable = lib.mkEnableOption "Niri compositor";
+    extraOptions = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+    };
+  };
 
   imports = [
     inputs.niri.nixosModules.niri
-    ./outputs.nix
     ./binds.nix
     ./settings.nix
     ./rules.nix

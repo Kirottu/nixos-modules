@@ -1,4 +1,8 @@
 {
+  config,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules
@@ -11,12 +15,32 @@
       hostName = "missionary-of-harold";
       # networkmanager.wifi.powersave = false;
     };
+    net.ctrld.secretName = config.networking.hostName;
 
     gaming = {
       heroic.enable = true;
       prismlauncher.enable = true;
       umu-run.enable = true;
       steam.enable = true;
+    };
+
+    graphical = {
+      yand.output = "eDP-1";
+      niri.extraOptions = {
+        workspaces."chat" = {
+          open-on-output = "eDP-1";
+        };
+
+        workspaces."games" = {
+          open-on-output = "eDP-1";
+        };
+
+        workspaces."web" = {
+          open-on-output = "eDP-1";
+        };
+
+        outputs."eDP-1".scale = 1.0;
+      };
     };
 
     services.btrfs.autoScrub.enable = true;

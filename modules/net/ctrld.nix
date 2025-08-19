@@ -22,19 +22,24 @@ let
       };
     };
   };
+
+  cfg = config.net.ctrld;
 in
 {
   options.net.ctrld = {
     enable = lib.mkEnableOption "CtrlD";
+    secretName = lib.mkOption {
+      type = lib.types.str;
+    };
   };
 
   imports = [
     inputs.ctrld.nixosModules.ctrld
   ];
 
-  config = lib.mkIf config.net.ctrld.enable {
+  config = lib.mkIf cfg.enable {
     sops = lib.mkIf config.secrets.sops.enable {
-      secrets."dns/doh/${config.networking.hostName}" = {
+      secrets."dns/doh/${cfg.secretName}" = {
         sopsFile = ../../secrets/dns.yaml;
       };
 
@@ -42,7 +47,7 @@ in
         settings
         // {
           upstream."0" = {
-            endpoint = config.sops.placeholder."dns/doh/${config.networking.hostName}";
+            endpoint = config.sops.placeholder."dns/doh/${cfg.secretName}";
             type = "doh";
             timeout = 5000;
           };
