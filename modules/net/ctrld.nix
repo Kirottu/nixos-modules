@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  pkgs,
   lib,
   ...
 }:
@@ -28,8 +27,9 @@ in
 {
   options.net.ctrld = {
     enable = lib.mkEnableOption "CtrlD";
-    secretName = lib.mkOption {
-      type = lib.types.str;
+    upstream = lib.mkOption {
+      type = with lib.types; nullOr str;
+      default = null;
     };
   };
 
@@ -38,24 +38,6 @@ in
   ];
 
   config = lib.mkIf cfg.enable {
-    sops = lib.mkIf config.secrets.sops.enable {
-      secrets."dns/doh/${cfg.secretName}" = {
-        sopsFile = ../../secrets/dns.yaml;
-      };
-
-      templates."ctrld-config.toml".file = (pkgs.formats.toml { }).generate "ctrld-placeholder.toml" (
-        settings
-        // {
-          upstream."0" = {
-            endpoint = config.sops.placeholder."dns/doh/${cfg.secretName}";
-            type = "doh";
-            timeout = 5000;
-          };
-        }
-      );
-
-    };
-
     networking = {
       networkmanager.dns = lib.mkForce "none";
       nameservers = [
@@ -66,7 +48,17 @@ in
     services.ctrld = {
       enable = true;
       settings =
-        if config.secrets.sops.enable then config.sops.templates."ctrld-config.toml".path else settings;
+        if (cfg.upstream != null) then
+          settings
+          // {
+            upstream."0" = {
+              endpoint = cfg.upstream;
+              type = "doh";
+              timeout = 5000;
+            };
+          }
+        else
+          settings;
     };
   };
 }

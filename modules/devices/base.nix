@@ -37,7 +37,6 @@
 
     console.keyMap = "fi";
 
-    secrets.sops.enable = true;
     zramSwap.enable = true;
   };
 }

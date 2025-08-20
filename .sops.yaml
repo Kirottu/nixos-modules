@@ -1,9 +1,0 @@
-keys:
-  - &church-of-harold age19ez654t09650gmatew4v5e7ueselyygnr644p0hj954egfmp9gcq5wppf5
-  - &missionary-of-harold age1eks5th67wk6g2jwgrvdjye6wagk7juygduyyze3g97uzfpmdwqzstw32tg
-creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
-    key_groups:
-      - age:
-        - *church-of-harold
-        - *missionary-of-harold
