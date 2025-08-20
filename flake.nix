@@ -1,5 +1,5 @@
 {
-  description = "My public NixOS modules";
+  description = "My NixOS config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -76,13 +76,25 @@
       lib = import ./lib { inherit inputs lib; };
     in
     {
-      inherit lib;
-      nixosModules.default =
-        { ... }:
-        {
-          imports = [
-            ./modules
+      nixosConfigurations = {
+        church-of-harold = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs lib;
+          };
+          modules = [
+            ./hosts/church-of-harold
           ];
         };
+        missionary-of-harold = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs lib;
+          };
+          modules = [
+            ./hosts/missionary-of-harold
+          ];
+        };
+      };
     };
 }
