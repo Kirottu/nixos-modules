@@ -8,9 +8,18 @@
   ];
 
   security = {
-    sudo.extraConfig = ''
-      Defaults lecture = never
-    '';
+    sudo = {
+      enable = false;
+      extraConfig = ''
+        Defaults lecture = never
+      '';
+    };
+    sudo-rs = {
+      enable = true;
+      # extraConfig = ''
+      #   Defaults lecture = false
+      # '';
+    };
   };
   impermanence.userDirectories = [
     {
