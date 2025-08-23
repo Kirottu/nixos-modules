@@ -9,7 +9,6 @@
     impermanence.userDirectories = [
       "Games"
       ".factorio"
-      ".renpy"
     ];
   };
 }

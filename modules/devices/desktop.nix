@@ -15,15 +15,6 @@
     #   ];
     # };
     boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.kernelPatches = [
-      {
-        name = "kmemleak";
-        patch = null;
-        extraConfig = ''
-          DEBUG_KMEMLEAK y
-        '';
-      }
-    ];
 
     services.scx = {
       enable = true;

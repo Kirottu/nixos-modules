@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -36,6 +37,10 @@
     };
 
     console.keyMap = "fi";
+
+    environment.systemPackages = [
+      (lib.hiPrio pkgs.uutils-coreutils-noprefix)
+    ];
 
     secrets.sops.enable = true;
     zramSwap.enable = true;

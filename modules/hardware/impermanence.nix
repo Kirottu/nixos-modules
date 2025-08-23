@@ -80,7 +80,9 @@
         "/etc/machine-id"
       ];
       users.${config.mainUser.userName} = {
-        directories = config.impermanence.userDirectories;
+        directories = config.impermanence.userDirectories ++ [
+          ".config/nix"
+        ];
         files = config.impermanence.userFiles;
       };
     };

@@ -22,8 +22,13 @@
         default = "zen-beta.desktop";
       };
     };
+    sops.secrets."users/pass-hash" = {
+      neededForUsers = true;
+      sopsFile = ../../secrets/users.yaml;
+    };
     mainUser = {
       userName = "kirottu";
+      hashedPasswordFile = config.sops.secrets."users/pass-hash".path;
     };
     cli = {
       starship.enable = true;

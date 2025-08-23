@@ -10,7 +10,6 @@
     networking = {
       hostName = "church-of-harold";
     };
-    net.ctrld.secretName = config.networking.hostName;
     gaming = {
       vr.enable = true;
       dolphin-emu.enable = true;

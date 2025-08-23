@@ -11,6 +11,7 @@
 
     niri = {
       url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
@@ -28,15 +29,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    nixpkgs-xr = {
+      url = "github:nix-community/nixpkgs-xr";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
-    persist-retro.url = "github:Kirottu/persist-retro";
 
     # My bits and bops
     yand = {
       url = "github:Kirottu/yand";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    persist-retro.url = "github:Kirottu/persist-retro";
 
     kidex = {
       url = "github:Kirottu/kidex";
@@ -59,7 +64,7 @@
     };
 
     anyrun = {
-      url = "github:anyrun-org/anyrun";
+      url = "github:anyrun-org/anyrun/relm4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -67,6 +72,12 @@
       url = "github:Kirottu/waybar-niri-overflow";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    private = {
+      url = "github:Kirottu/nixos-private";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -74,25 +85,28 @@
     let
       # Overlay with some utilities
       lib = import ./lib { inherit inputs lib; };
+      privateInputs = inputs.private.inputs;
     in
     {
       nixosConfigurations = {
         church-of-harold = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs lib;
+            inherit inputs lib privateInputs;
           };
           modules = [
             ./hosts/church-of-harold
+            inputs.private.nixosModules.church-of-harold
           ];
         };
         missionary-of-harold = lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs lib;
+            inherit inputs lib privateInputs;
           };
           modules = [
             ./hosts/missionary-of-harold
+            inputs.private.nixosModules.missionary-of-harold
           ];
         };
       };

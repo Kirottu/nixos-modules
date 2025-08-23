@@ -69,69 +69,61 @@ in
         {
           diagonals = lib.concatStrings [
             ''
-              #window {
+              window {
                 background-color: rgba(0, 0, 0, 0);
               }
 
-              #plugin {
+              .plugin {
                 background: transparent;
+              }
+
+              .plugin:not(:last-child) {
                 padding-bottom: 5px;
               }
 
-              #match {
+              .match {
                 padding: 2.5px;
               }
 
-              #match:selected {
+              .match:selected {
                 background:
                   linear-gradient(135deg, ${l1} 30px, transparent 30px),
                   linear-gradient(-45deg, ${l1} 30px, transparent 30px);
-              }
-
-              #match:selected label#info {
-                color: #b0b0b0;
-                animation: fade 0.1s linear
+                animation: fade 0.1s linear;
               }
 
               @keyframes fade {
                 0% {
-                  color: transparent;
+                  opacity: 0;
                 }
 
                 100% {
-                  color: #b0b0b0;
+                  opacity: 1;
                 }
               }
 
-              #match label#info {
-                color: transparent;
-              }
-
-              #match:hover {
-                background: transparent;
-              }
-
-              label#match-desc {
+              label.match.description {
                 font-size: 10px;
                 color: #b0b0b0;
               }
 
-              label#plugin {
+              label.plugin {
                 font-size: 14px;
               }
             ''
             {
               vertical = ''
-                box#main {
-                  background-color: ${l4};
-                  box-shadow: 0 0 5px black;
-                }
-
-                list#main {
+                box.matches {
                   background-color: rgba(0, 0, 0, 0);
                 }
 
-                entry#entry {
+                box.main {
+                  background-color: ${l4};
+                  box-shadow: 0 0 5px black;
+                  margin: 10px;
+                }
+
+                entry {
                   min-height: 40px;
                   background: linear-gradient(135deg, ${l1} 400px, ${l3} 400px, ${l3} 450px, ${l1} 450px);
                   border-radius: 0px;
@@ -140,23 +132,23 @@ in
                 }
               '';
               overview = ''
-                box#main {
+                box.main {
                   background-color: transparent;
                 }
-                list#main {
-                  margin-top: 100px;
+                box.matches {
+                  margin: 100px 10px 10px 10px;
                   background-color: ${l4};
                   box-shadow: 0 0 5px black;
                 }
-                entry#entry {
+                text {
                   min-height: 30px;
                   background:
                     linear-gradient(135deg, transparent 100px, ${l3} 100px, ${l3} 120px, transparent 120px),
-                    linear-gradient(135deg, transparent 25px, ${l1} 25px, ${l1} 50%, transparent 50%),
-                    linear-gradient(-45deg, transparent 25px, ${l1} 25px, ${l1} 50%, transparent 50%);
+                    linear-gradient(135deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%),
+                    linear-gradient(-45deg, transparent 25px, ${l1} 25px, ${l1} 51%, transparent 51%);
                   border-radius: 0px;
                   box-shadow: none;
-                  border: none;
+                  outline: none;
                   padding-left: 40px;
                   padding-right: 40px;
                   margin-left: 200px;

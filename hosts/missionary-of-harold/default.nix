@@ -15,7 +15,6 @@
       hostName = "missionary-of-harold";
       # networkmanager.wifi.powersave = false;
     };
-    net.ctrld.secretName = config.networking.hostName;
 
     gaming = {
       heroic.enable = true;

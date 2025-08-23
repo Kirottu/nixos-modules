@@ -23,11 +23,5 @@
         path = "/home/${config.mainUser.userName}/.config/sops/age/keys.txt";
       in
       if config.impermanence.enable then "/persistent${path}" else path;
-
-    sops.secrets."users/pass-hash" = {
-      neededForUsers = true;
-      sopsFile = ../../secrets/users.yaml;
-    };
-    mainUser.hashedPasswordFile = config.sops.secrets."users/pass-hash".path;
   };
 }
